@@ -1,0 +1,9 @@
+#!/bin/bash
+# Installs Docker and runs the application container on port 80.
+set -euo pipefail
+dnf -y update
+dnf -y install docker
+systemctl enable --now docker
+docker run -d --name app --restart unless-stopped \
+  --read-only --tmpfs /tmp --cap-drop ALL --security-opt no-new-privileges \
+  -p 80:${container_port} "${image}"

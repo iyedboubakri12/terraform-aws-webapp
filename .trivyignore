@@ -1,0 +1,11 @@
+# Accepted findings, each with a reason. Reviewed on every change to this file.
+
+# AVD-AWS-0107: security group allows ingress from 0.0.0.0/0.
+# Port 80 of a public demo web server is meant to be public. Set
+# allowed_http_cidrs to your own IP to make the demo private.
+AVD-AWS-0107
+
+# AVD-AWS-0104: security group allows egress to 0.0.0.0/0.
+# The instance pulls OS packages and a container image from public registries.
+# A production setup would use VPC endpoints + a pull-through cache instead.
+AVD-AWS-0104
